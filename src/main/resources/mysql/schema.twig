@@ -1,0 +1,12 @@
+{%- import "/mysql/types.twig" as tt -%}
+
+{%- for definition in definitions %}
+CREATE TABLE {{ utils.toSnakeCase(definition.name.simpleName) }} (
+{%- for field in definition.fields %}
+  {{ utils.toSnakeCase(field.name) }} {{ types[field.type.token.toString()] }}
+  {%- if (loop.revindex0 != 0) -%}
+    ,
+  {%- endif -%}
+{% endfor %}
+);
+{%- endfor %}

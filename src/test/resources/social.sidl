@@ -1,0 +1,5 @@
+class User {
+  Id u64
+  Name s
+  Email s
+}
